@@ -1,0 +1,33 @@
+from PIL import Image, ImageDraw
+
+# Open an image file
+im = Image.open('example.jpg')
+
+# Display the image
+im.show()
+
+# Get basic information about the image
+print(f"Format: {im.format}")
+print(f"Size: {im.size}")
+print(f"Mode: {im.mode}")
+
+# Convert the image to grayscale
+im = im.convert('L')
+
+# Display the grayscale image
+im.show()
+
+# Create a new image
+new_im = Image.new('RGB', (200, 200), color='white')
+
+# Draw on the new image
+draw = ImageDraw.Draw(new_im)
+draw.line((0, 0) + new_im.size, fill='red', width=5)
+draw.line((0, new_im.size[1], new_im.size[0], 0), fill='green', width=5)
+draw.rectangle((50, 50, 150, 150), fill='blue')
+
+# Display the new image
+new_im.show()
+
+# Save the new image to a file
+new_im.save('new_image.jpg')
